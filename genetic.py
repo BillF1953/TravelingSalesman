@@ -1,10 +1,10 @@
 import numpy as np 
+from time import perf_counter, strftime, gmtime
 
 class GA(object):
-    def __init__(self, adj_matrix, population_size=100, n_iter=100):
+    def __init__(self, adj_matrix, population_size=100):
         self.adj = adj_matrix             # defines distances between nodes
         self.pop_size = population_size   # size of soln space
-        self.n_iter = n_iter              # No. iterations to run the algorithm
         self.n = len(adj_matrix)          # number of nodes
 
         # create initial population
@@ -125,15 +125,18 @@ class GA(object):
     
     def find_fittest(self):
         max_fit = None 
+        max_ind = None 
         for ind in self.population:
             fitness = self.get_fitness(ind)
 
             if max_fit is None:
                 max_fit = fitness 
+                max_ind = ind
             elif fitness > max_fit:
                 max_fit = fitness 
+                max_ind = ind 
         
-        return max_fit 
+        return max_fit, max_ind 
 
         
 
