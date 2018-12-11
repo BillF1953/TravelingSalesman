@@ -1,4 +1,3 @@
-
 """CSCI 538 Project Traveling Salesman
    Tyler Forrester  December 10th 2018"""
 
@@ -85,11 +84,7 @@ def do2opt(tour, points):
     return tour, max_distance
 
 
-
-
-
 if __name__ == "__main__":
-
     # generate random ten city graph.
     num_cities = 10
     points = np.random.randint(0, 1000, size=(num_cities, 2))
