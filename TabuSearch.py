@@ -11,7 +11,7 @@ import pickle
 
 
 
-def evaluate_cost(solution,adj):
+def evaluate_cost(solution,adj):#sum the edges in the given solution
     total = 0
     for i in range(len(adj)-1):
         total += adj[solution[i],solution[i+1]]
@@ -86,11 +86,11 @@ def solve(adj,city):
         csv_data.write(str(i) + ',' + str(currentCost) + '\n')
         if currentCost == pastCost:
             
-            k += 1
-            if k == 5:
+            k += 1 # increment the number of consecutive iterations without improvement
+            if k == 5: #if no improvement over the last five iterations, terminate search
                 print(i)
                 break
-        else:
+        else: # reset k: the counter of consecutive iterations without improvement
             k=0
         
         pastCost = evaluate_cost(bestSolution,adj)
